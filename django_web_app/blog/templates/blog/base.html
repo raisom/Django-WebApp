@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,15 +12,15 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" >
     <link rel="stylesheet" href="{% static 'blog/main.css' %}">
     {% if title %}
-        <title>Django WebApp - {{title}}</title>
+        <title>RAI WEBAPP{{title}}</title>
     {% else %}
-        <title>Django WebApp</title>
+        <title>RAI WEBAPP</title>
     {% endif %}
 
 </head>
   <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand font-weight-bold" href="{% url 'blog-home' %}"><i class="fas fa-file"></i> Django WebApp</a>
+                <a class="navbar-brand font-weight-bold" href="{% url 'blog-home' %}"><i class="fas fa-file"></i> RAI WEBAPP</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -28,7 +28,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                      <a class="nav-link" href="{% url 'blog-home' %}"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="{% url 'blog-home' %}"><i class="fas fa-home"></i> ホーム <span class="sr-only">(current)</span></a>
                     </li>
                    
 
@@ -36,20 +36,20 @@
                   </ul>
                   <!------{{ request.get_host }}/blog/search/-->
                   <form id="searchform" action="{% url 'search' %}" method="get">
-                    <input type="text" name="q" type="text" value="{{ request.GET.q }}" placeholder="Search Here..." />
+                    <input type="text" name="q" type="text" value="{{ request.GET.q }}" placeholder="検索" />
                     <button type="button" onclick="searchform.submit()" class=" text-white my-color btn-primary"><i class="fa fa-search"></i></button>
                 </form>
               
                     {% if user.is_authenticated %}
-                    <a href="{% url 'user-posts' user %}" class="btn text-white m-2"><i class="fas fa-user-shield"></i> My Post</a>
-                    <a href="{% url 'post-create' %} " class="btn text-white m-2"><i class="fas fa-user-edit"></i> New Post</a>
+                    <a href="{% url 'user-posts' user %}" class="btn text-white m-2"><i class="fas fa-user-shield"></i>投稿履歴</a>
+                    <a href="{% url 'post-create' %} " class="btn text-white m-2"><i class="fas fa-user-edit"></i> 新規投稿</a>
                     <a href="{% url 'profile' %} " class="btn text-white m-2"><i class="fas fa-user"></i> {{ user.username }}</a>
-                    <a href="{% url 'logout' %} " class="btn text-white m-2"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+                    <a href="{% url 'logout' %} " class="btn text-white m-2"><i class="fas fa-sign-out-alt"></i> ログアウト</a>
                     
                     {% else %}
-                    <a href="{% url 'login' %} " class="btn text-white m-2"><i class="fas fa-user-tie"></i> Log In</a>
+                    <a href="{% url 'login' %} " class="btn text-white m-2"><i class="fas fa-user-tie"></i> ログイン</a>
                    
-                    <a href="{% url 'register' %} " class="btn text-white m-2"> <i class="fas fa-sign-in-alt"></i> Sign Up</a>
+                    <a href="{% url 'register' %} " class="btn text-white m-2"> <i class="fas fa-sign-in-alt"></i> 新規登録</a>
                     {% endif %}
                   
                 </div>
